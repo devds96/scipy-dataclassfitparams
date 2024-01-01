@@ -1,0 +1,9 @@
+flake8
+hypothesis
+mypy
+networkx
+numpy
+pybadges
+pytest
+pytest-cov
+scipy

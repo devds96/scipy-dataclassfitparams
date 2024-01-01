@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=42.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scipy_dataclassfitparams"
+authors = [
+    {name = "devds96", email = "src.devds96@gmail.com"}
+]
+license = {text = "MIT"}
+description = """A simple wrapper around scipy.optimize.curve_fit to \
+simplify fitting with parameter specifications defined by dataclass \
+fields."""
+requires-python = ">=3.8"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Information Technology",
+]
+dynamic = [
+    "dependencies",
+    "optional-dependencies",
+    "readme",
+    "version",
+]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+optional-dependencies.tests = { file = ["requirements_tests.txt"] }
+readme = {file = ["README.md"]}
+version = {attr = "scipy_dataclassfitparams.__version__"}
+
+[tool.pytest.ini_options]
+addopts = "--cov=scipy_dataclassfitparams --cov-report term-missing"
+testpaths = [
+    "tests",
+]
+
+[tool.coverage.run]
+branch = true
+source = [
+    "scipy_dataclassfitparams",
+]
+relative_files = true
+
+[tool.coverage.report]
+exclude_also = [
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "@_?abstractmethod",
+    "@_overload"
+]
